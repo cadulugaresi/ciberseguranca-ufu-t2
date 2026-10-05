@@ -1,82 +1,93 @@
+import time
+import random
+
+
 def busca_linear(lista, alvo):
-    for posicao in range(len(lista)):                                      # Percorre a lista do início ao fim, índice por índice
-        if lista[posicao] == alvo:                                         # Se alvo estiver entre os itens,
-            return posicao                                                 # retorne a posição onde o item é o alvo
-    return -1                                                              # -1 aqui é convenção
+    for posicao in range(len(lista)):  # percorre a lista do início ao fim
+        if lista[posicao] == alvo:  # se o item atual for o alvo
+            return posicao  # retorna a posição do alvo
+    return -1  # -1 é convenção de não encontrado
 
-def busca_binaria(lista, alvo):                                            # Vai cortando a lista pela metade pra otimizar as bucas
 
-    esq = 0                                                                # Esquerda é a posição 0
-    dir = len(lista) - 1                                                   # Direita é a posição final da lista -1
+def busca_binaria(lista, alvo):  # busca cortando a lista pela metade
+    esq = 0  # esquerda começa na posição 0
+    dir = len(lista) - 1  # direita começa na última posição
 
-    while esq <= dir:                                                      # Metade é a esquerda (0) + direita
-        metade = (esq + dir) // 2                                          #  (todas as posições) // 2
+    while esq <= dir:  # enquanto o pedaço não está vazio
+        metade = (esq + dir) // 2  # calcula o meio do pedaço
+        if lista[metade] == alvo:  # alvo está na metade
+            return metade  # retorna a posição da metade
+        elif lista[metade] < alvo:  # alvo é maior que a metade
+            esq = metade + 1  # descarta a metade esquerda
+        else:  # alvo é menor que a metade
+            dir = metade - 1  # descarta a metade direita
 
-        if lista[metade] == alvo:                                          # Se o alvo da busca estiver na posição da metade
-            return metade                                                  # da lista, retorna a metade
-        elif lista[metade] < alvo:                                         # Se o alvo for maior q os valores da primeira metade
-            esq = metade + 1                                               # retorna a segunda metade
-        else:                                                              # Se o alvo for menor que a posição da metade,
-            dir = metade - 1                                               # retorna a primeira metade
+    return -1  # não encontrado
 
-    return -1
 
-## Testes de busca:
+# Testes de busca:
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     lista_busca = [10, 20, 30, 40, 50, 60, 70, 80]
-    
-    print('=== BUSCAS ===')
-    print(f'Linear(40): {busca_linear(lista_busca, 40)}')                  # 3
-    print(f'Linear(100): {busca_linear(lista_busca, 100)}')                # -1
-    print(f'Binária(40): {busca_binaria(lista_busca, 40)}')                # 3
-    print(f'Binária(100): {busca_binaria(lista_busca, 100)}')              # -1
+
+    print("=== BUSCAS ===")
+    print(f"Linear(40): {busca_linear(lista_busca, 40)}")  # 3
+    print(f"Linear(100): {busca_linear(lista_busca, 100)}")  # -1
+    print(f"Binária(40): {busca_binaria(lista_busca, 40)}")  # 3
+    print(f"Binária(100): {busca_binaria(lista_busca, 100)}")  # -1
+
 
 def bubble_sort(lista):
+    tamanho = len(lista)  # quantidade de itens da lista
 
-    tamanho = len(lista)                                                   # Define o tamanho da lista (a qtde de posições q os itens da lista ocupam)
-
-    for passada in range(tamanho):                                         # Pra cada passada (vai passar o número de vezes equivalente ao tamanho da lista)
-        for posicao in range(tamanho - 1 - passada):                       # Passando na posição tal dentro do range que queremos
-            if lista[posicao] > lista[posicao + 1]:                        # Se o item da posição a esquerda for maior que o da direita
-                lista[posicao], lista[posicao + 1] = lista[posicao + 1], lista[posicao] # Ocorre a troca
+    for passada in range(tamanho):  # cada passada
+        for posicao in range(tamanho - 1 - passada):  # posições a comparar
+            if lista[posicao] > lista[posicao + 1]:  # fora de ordem?
+                # troca os dois itens de lugar
+                lista[posicao], lista[posicao + 1] = lista[posicao + 1], lista[posicao]
 
     return lista
 
-def bubble_sort_explicado(lista):                                          # Aqui pedi pra IA gerar uma versão da função que explicasse cada etapa
-    print('BubbleSort em ação: ')                                          # porque eu estava com dificuldade de entender a construção da função
-    
+
+def bubble_sort_explicado(lista):  # versão com prints pra visualizar
+    print("BubbleSort em ação: ")
+
     tamanho = len(lista)
 
     for passada in range(tamanho):
-        print(f'--- Passada {passada}: range(0, {tamanho - 1 - passada}) ---')
+        print(f"--- Passada {passada}: range(0, {tamanho - 1 - passada}) ---")
         for posicao in range(tamanho - 1 - passada):
             if lista[posicao] > lista[posicao + 1]:
                 lista[posicao], lista[posicao + 1] = lista[posicao + 1], lista[posicao]
-            print(f'  posicao={posicao}: {lista}')
+            print(f"  posicao={posicao}: {lista}")
 
     return lista
 
-bubble_sort_explicado([7, 3, 2, 0, 4, 6])                                  # Exemplo de BubbleSort
+
+bubble_sort_explicado([7, 3, 2, 0, 4, 6])  # exemplo de BubbleSort
+
 
 def selection_sort(lista):
+    tamanho = len(lista)  # quantidade de itens na lista
 
-    tamanho = len(lista)                                                   # Quantos itens tem na lista
-    
-    for posicao_atual in range(tamanho):                                   # Percorre cada posição que queremos preencher
-        posicao_menor = posicao_atual                                      # Assume que o menor tá na posição atual
-                                                                  # Procura o menor no resto
-        for posicao_busca in range(posicao_atual + 1, tamanho):            # Se existir um menor do que o presumido
-            if lista[posicao_busca] < lista[posicao_menor]:                # anteriormente, atualiza a posição do menor,
-                posicao_menor = posicao_busca                              #  ou seja, esse novo menor vai pra posição 0.
-        
-        lista[posicao_atual], lista[posicao_menor] = lista[posicao_menor], lista[posicao_atual]
+    for posicao_atual in range(tamanho):  # posição que queremos preencher
+        posicao_menor = posicao_atual  # assume que o menor está aqui
+        for posicao_busca in range(posicao_atual + 1, tamanho):  # busca o menor
+            if lista[posicao_busca] < lista[posicao_menor]:  # achou um menor?
+                posicao_menor = posicao_busca  # atualiza a posição do menor
+
+        # troca a posição atual com a posição do menor
+        lista[posicao_atual], lista[posicao_menor] = (
+            lista[posicao_menor],
+            lista[posicao_atual],
+        )
 
     return lista
 
-def selection_sort_explicado(lista):                                       # Aqui é o selection sort com os prints
-    print('SelectionSort em ação: ')                                       # mostrando cada etapa/passada da função
+
+def selection_sort_explicado(lista):  # versão com prints pra visualizar
+    print("SelectionSort em ação: ")
 
     tamanho = len(lista)
 
@@ -87,31 +98,37 @@ def selection_sort_explicado(lista):                                       # Aqu
             if lista[posicao_busca] < lista[posicao_menor]:
                 posicao_menor = posicao_busca
 
-        lista[posicao_atual], lista[posicao_menor] = lista[posicao_menor], lista[posicao_atual]
-        print(f'Passada {posicao_atual}: {lista}')
+        lista[posicao_atual], lista[posicao_menor] = (
+            lista[posicao_menor],
+            lista[posicao_atual],
+        )
+        print(f"Passada {posicao_atual}: {lista}")
 
     return lista
 
-selection_sort_explicado([7, 3, 2, 0, 4, 6])                               # Exemplo de SelectionSort
+
+selection_sort_explicado([7, 3, 2, 0, 4, 6])  # exemplo de SelectionSort
+
 
 def insertion_sort(lista):
-
     tamanho = len(lista)
-    
-    for posicao_atual in range(1, tamanho):                                # começa em 1 (o 0 já tá "ordenado")
-        chave = lista[posicao_atual]                                       # o item que vamos inserir na parte ordenada
-        posicao_compara = posicao_atual - 1                                # começa comparando com o item à esquerda
-                                                                           # enquanto não chegou ao início e o item à esquerda é maior que a chave
+
+    for posicao_atual in range(1, tamanho):  # começa em 1 (0 já ordenado)
+        chave = lista[posicao_atual]  # item a ser inserido
+        posicao_compara = posicao_atual - 1  # começa à esquerda
+
+        # enquanto não chegou ao início e o item à esquerda é maior
         while posicao_compara >= 0 and lista[posicao_compara] > chave:
-            lista[posicao_compara + 1] = lista[posicao_compara]            # move o item pra direita
-            posicao_compara -= 1                                           # volta mais uma posição
-                                                                           # encaixa a chave na posição correta
-        lista[posicao_compara + 1] = chave
-    
+            lista[posicao_compara + 1] = lista[posicao_compara]  # move pra direita
+            posicao_compara -= 1  # volta uma posição
+
+        lista[posicao_compara + 1] = chave  # encaixa a chave na posição
+
     return lista
 
-def insertion_sort_explicado(lista):
-    print('InsertionSort em ação: ')
+
+def insertion_sort_explicado(lista):  # versão com prints pra visualizar
+    print("InsertionSort em ação: ")
     tamanho = len(lista)
     for posicao_atual in range(1, tamanho):
         chave = lista[posicao_atual]
@@ -120,44 +137,41 @@ def insertion_sort_explicado(lista):
             lista[posicao_comparacao + 1] = lista[posicao_comparacao]
             posicao_comparacao -= 1
         lista[posicao_comparacao + 1] = chave
-        print(f'Após inserir {chave}: {lista}')
+        print(f"Após inserir {chave}: {lista}")
     return lista
+
 
 insertion_sort_explicado([5, 2, 4, 1, 3])
 
-## Testes de desempenho dos Sorts/Ordenações:
+# Testes de desempenho dos Sorts:
 
-import time
-import random                                                              # Importei o time pra medir o tempo de execução das funções
-                                                                           # e também o random só pra desordenar aleatoriamente as listas.
-if __name__ == '__main__':                                                 # Testes de desempenho:
-
-    print('Testes de desempenho das Sorts: ')
+if __name__ == "__main__":
+    print("Testes de desempenho das Sorts: ")
     tamanhos = [100, 500, 1000]
 
     for n in tamanhos:
         lista_teste = list(range(n))
-        random.shuffle(lista_teste)                                        # Usando o random pra desorganizar a lista
-        
-        print(f'Tamanho: {n}')                                             # Mostra qual o tamanho da lista sendo ordenada (100, 500 ou 1000)
-        
+        random.shuffle(lista_teste)  # desorganiza a lista aleatoriamente
+
+        print(f"Tamanho: {n}")
+
         copia = lista_teste.copy()
         inicio = time.time()
         bubble_sort(copia)
         final = time.time()
         teste_bubble = final - inicio
-        print(f'Bubble: {teste_bubble} segundos. ')
-        
+        print(f"Bubble: {teste_bubble} segundos. ")
+
         copia = lista_teste.copy()
         inicio = time.time()
         selection_sort(copia)
         final = time.time()
         teste_selection = final - inicio
-        print(f'Selection: {teste_selection} segundos. ')
-        
+        print(f"Selection: {teste_selection} segundos. ")
+
         copia = lista_teste.copy()
         inicio = time.time()
         insertion_sort(copia)
         final = time.time()
         teste_insertion = final - inicio
-        print(f'Insertion: {teste_insertion} segundos. ')
+        print(f"Insertion: {teste_insertion} segundos. ")
