@@ -14,3 +14,7 @@ ENV/
 
 .DS_Store
 Thumbs.db
+
+ativos.json
+pyproject.toml
+.flake8
