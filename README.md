@@ -16,11 +16,11 @@ Este repositório será concluído até a data final das Sprints: **27/11/2026**
 | S3_04  | Análise de Algoritmos e Complexidade                        | ✅     |
 | S3_05  | Busca e Ordenação                                           | ✅     |
 | S3_06  | Qualidade de Software e Código Limpo                        | ✅     |
-| S3_07  | Estratégias de Teste e Testes Unitários                     | ⏳     |
-| S3_08  | GitHub, Pull Requests e Integração Contínua                 | ⏳     |
-| S3_09  | Álgebra Linear I: Matrizes e Transformações Lineares        | ⏳     |
-| S3_10  | Álgebra Linear II: Sistemas Lineares                        | ⏳     |
-| S3_11  | Álgebra Linear III: Determinantes e Invertibilidade         | ⏳     |
+| S3_07  | Estratégias de Teste e Testes Unitários                     | ✅     |
+| S3_08  | GitHub, Pull Requests e Integração Contínua                 | ✅     |
+| S3_09  | Álgebra Linear I: Matrizes e Transformações Lineares        | ✅     |
+| S3_10  | Álgebra Linear II: Sistemas Lineares                        | ✅     |
+| S3_11  | Álgebra Linear III: Determinantes e Invertibilidade         | ✅     |
 | S3_12  | Erros Numéricos e Representação Computacional               | ⏳     |
 | S3_13  | Lógica Proposicional e Argumentação                         | ⏳     |
 | S3_14  | Portas Lógicas e Arquitetura de Computadores                | ⏳     |
