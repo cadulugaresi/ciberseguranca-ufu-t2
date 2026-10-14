@@ -114,7 +114,7 @@ print(f'''
 TL ex1.
 T(u.v) = {resultado1}
 T(u)+T(v) = {resultado2}
-São lineares e iguais? {np.array_equal(resultado1, resultado2)}
+São lineares e iguais? {np.allclose(resultado1, resultado2)}
 ''')
 
 # Matriz diagonal
@@ -136,5 +136,5 @@ Utilizando valores do RP ex1.:
 
 F(M.v) = {resultado3}
 (F.M)v = {resultado4}
-São iguais (associatividade)? {np.array_equal(resultado3, resultado4)}
+São iguais (associatividade)? {np.allclose(resultado3, resultado4)}
 ''')
