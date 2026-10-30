@@ -21,10 +21,10 @@ Este repositório será concluído até a data final das Sprints: **27/11/2026**
 | S3_09  | Álgebra Linear I: Matrizes e Transformações Lineares        | ✅     |
 | S3_10  | Álgebra Linear II: Sistemas Lineares                        | ✅     |
 | S3_11  | Álgebra Linear III: Determinantes e Invertibilidade         | ✅     |
-| S3_12  | Erros Numéricos e Representação Computacional               | ⏳     |
-| S3_13  | Lógica Proposicional e Argumentação                         | ⏳     |
-| S3_14  | Portas Lógicas e Arquitetura de Computadores                | ⏳     |
-| S3_15  | Usabilidade, Prototipação e Acessibilidade                  | ⏳     |
+| S3_12  | Erros Numéricos e Representação Computacional               | ✅     |
+| S3_13  | Lógica Proposicional e Argumentação                         | ✅     |
+| S3_14  | Portas Lógicas e Arquitetura de Computadores                | ✅     |
+| S3_15  | Usabilidade, Prototipação e Acessibilidade                  | ✅     |
 | S3_16  | Front-End Moderno                                           | ⏳     |
 | S3_17  | JavaScript Assíncrono e Consumo de APIs                     | ⏳     |
 | S3_18  | APIs REST e Testes de Integração                            | ⏳     |
