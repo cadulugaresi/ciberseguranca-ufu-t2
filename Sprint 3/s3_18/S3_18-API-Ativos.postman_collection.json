@@ -1,0 +1,322 @@
+{
+  "info": {
+    "_postman_id": "84a39211-10bd-49a3-a322-020926d18fa4",
+    "name": "S3_18 - API Ativos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59443113",
+    "_collection_link": "https://go.postman.co/collection/59443113-84a39211-10bd-49a3-a322-020926d18fa4?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Listar ativos",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status é 200\", () => {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Resposta é uma lista\", () => {\n    const dados = pm.response.json();\n    pm.expect(dados).to.be.an(\"array\");\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/ativos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "ativos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar ativo inexistente",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status é 404\", () => {\n    pm.response.to.have.status(404);\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/ativos/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "ativos",
+            "999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cadastrar ativo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status é 201\", () => {\n    pm.response.to.have.status(201);\n});\n\npm.test(\"Ativo criado com o nome certo e com id\", () => {\n    const dados = pm.response.json();\n    pm.expect(dados.nome).to.eql(\"Câmera de Segurança\");\n    pm.expect(dados).to.have.property(\"id\");\n    pm.collectionVariables.set(\"ativoId\", dados.id); // guarda o id pras próximas requests\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nome\": \"Câmera de Segurança\",\n    \"responsavel\": \"Rafael Torres\",\n    \"setor\": \"Segurança\",\n    \"vulnerabilidadesAbertas\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/ativos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "ativos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar ativo cadastrado",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status é 200\", () => {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"É o ativo que acabou de ser cadastrado\", () => {\n    const dados = pm.response.json();\n    pm.expect(dados.id).to.eql(pm.collectionVariables.get(\"ativoId\"));\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/ativos/{{ativoId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "ativos",
+            "{{ativoId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Substituir ativo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status é 200\", () => {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Responsável foi substituído\", () => {\n    const dados = pm.response.json();\n    pm.expect(dados.responsavel).to.eql(\"Cadu\");\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nome\": \"Câmera de Segurança\",\n    \"responsavel\": \"Cadu\",\n    \"setor\": \"Segurança\",\n    \"vulnerabilidadesAbertas\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/ativos/{{ativoId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "ativos",
+            "{{ativoId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Editar ativo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status é 200\", () => {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Só o campo enviado mudou\", () => {\n    const dados = pm.response.json();\n    pm.expect(dados.vulnerabilidadesAbertas).to.eql(0);\n    pm.expect(dados.nome).to.eql(\"Câmera de Segurança\"); // o resto continua igual\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"vulnerabilidadesAbertas\": 0\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/ativos/{{ativoId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "ativos",
+            "{{ativoId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Deletar ativo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status é 200\", () => {\n    pm.response.to.have.status(200);\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/ativos/{{ativoId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "ativos",
+            "{{ativoId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Confirmar remoção de ativo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Ativo removido não existe mais (404)\", () => {\n    pm.response.to.have.status(404);\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/ativos/{{ativoId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "ativos",
+            "{{ativoId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Listar vulnerabilidades de um ativo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status é 200\", () => {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Todas as vulnerabilidades pertencem ao ativo 4\", () => {\n    const dados = pm.response.json();\n    for (const vulnerabilidade of dados) {\n        pm.expect(vulnerabilidade.ativoId).to.eql(4);\n    }\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/ativos/4/vulnerabilidades",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "ativos",
+            "4",
+            "vulnerabilidades"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "ativoId",
+      "value": ""
+    }
+  ]
+}
