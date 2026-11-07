@@ -33,7 +33,16 @@ Este repositório será concluído até a data final das Sprints: **27/11/2026**
 
 **Legenda:** ✅ concluído · ⏳ em andamento / a fazer
 
->>> Exercícios das Sprints 4 e 5 ainda não disponíveis.
+## 📖 Sprint 4 — Atividades
+
+| UID    | Tema                                         | Status |
+|--------|----------------------------------------------|--------|
+| S4_06  | SQL Relacional: JOINs e Consultas Integradas | ✅     |
+| S4_07  | SQL: Agregações e Relatórios com GROUP BY    | ✅     |
+
+**Legenda:** ✅ concluído · ⏳ em andamento / a fazer
+
+>>> Exercícios da Sprint 5 ainda não disponíveis.
 
 ## 🐇 Como rodar
 
