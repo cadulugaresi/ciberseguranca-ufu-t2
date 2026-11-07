@@ -25,9 +25,9 @@ Este repositório será concluído até a data final das Sprints: **27/11/2026**
 | S3_13  | Lógica Proposicional e Argumentação                         | ✅     |
 | S3_14  | Portas Lógicas e Arquitetura de Computadores                | ✅     |
 | S3_15  | Usabilidade, Prototipação e Acessibilidade                  | ✅     |
-| S3_16  | Front-End Moderno                                           | ⏳     |
-| S3_17  | JavaScript Assíncrono e Consumo de APIs                     | ⏳     |
-| S3_18  | APIs REST e Testes de Integração                            | ⏳     |
+| S3_16  | Front-End Moderno                                           | ✅     |
+| S3_17  | JavaScript Assíncrono e Consumo de APIs                     | ✅     |
+| S3_18  | APIs REST e Testes de Integração                            | ✅     |
 | S3_19  | Backend e Persistência de Dados                             | ⏳     |
 | S3_20  | Redes, Segurança, LGPD e Sustentabilidade                   | ⏳     |
 
