@@ -33,20 +33,32 @@ Este repositório será concluído até a data final das Sprints: **27/11/2026**
 
 **Legenda:** ✅ concluído · ⏳ em andamento / a fazer
 
+> 📌 **S3_19 ainda está incompleto.** Os arquivos em `Sprint 3/s3_19/` (`bancoSQL.sql` e `mer_trabalho2.drawio`) são uma versão parcial e ainda serão concluídos.
+
 ## 📖 Sprint 4 — Atividades
 
-| UID    | Tema                                         | Status |
-|--------|----------------------------------------------|--------|
-| S4_06  | SQL Relacional: JOINs e Consultas Integradas | ✅     |
-| S4_07  | SQL: Agregações e Relatórios com GROUP BY    | ✅     |
+| UID    | Tema                                                     | Status |
+|--------|----------------------------------------------------------|--------|
+| S4_06  | SQL Relacional: JOINs e Consultas Integradas             | ✅     |
+| S4_07  | SQL: Agregações e Relatórios com GROUP BY                | ✅     |
+| S4_08  | Tabelas Hash e Otimização de Consultas \*                | ⏳     |
+| S4_09  | Estruturas Hierárquicas: Árvores Binárias                | ⏳     |
+| S4_11  | Algoritmos de Ordenação Avançados: Merge Sort \*         | ⏳     |
+| S4_12  | Algoritmos de Ordenação Avançados: Quick Sort            | ⏳     |
+| S4_13  | Complexidade Computacional de Estruturas e Algoritmos \* | ⏳     |
+| S4_15  | Docker: Conceitos Fundamentais e Containers              | ✅     |
 
 **Legenda:** ✅ concluído · ⏳ em andamento / a fazer
+
+> 📌 **As atividades da Sprint 4 que não aparecem na tabela têm entregáveis aplicados diretamente ao Trabalho 2** (arquitetura, grafos, testes automatizados, Docker, logs, implantação e integração final). Elas estão no repositório principal: [it-asset-vulnerability-manager](https://github.com/cadulugaresi/it-asset-vulnerability-manager).
+>
+> \* Atividades divididas entre os dois repositórios: a implementação de estudo fica aqui, e a aplicação ao Trabalho 2 (índices, ranking por risco e perfilamento) fica no repositório principal.
 
 >>> Exercícios da Sprint 5 ainda não disponíveis.
 
 ## 🐇 Como rodar
 
-Pré-requisito: **Python 3.8+**.
+Pré-requisito: **Python 3.8+**. Para o S4_15, também é necessário o **Docker** (Docker Desktop no macOS e no Windows).
 
 ```bash
 git clone https://github.com/cadulugaresi/ciberseguranca-ufu-t2.git
